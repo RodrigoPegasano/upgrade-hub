@@ -1,0 +1,250 @@
+/* 1. APLICANDO COLORES */
+.color {
+    color: blueviolet;
+}
+
+.rgb {
+    color: rgb(30, 190, 100);
+}
+
+.rgba {
+    color: rgba(100, 23, 120, 0.3);
+}
+
+.hexadecimal {
+    color: #ff0000;
+}
+
+/* 2. APLICANDO FUENTES BÁSICAS Y AVANZADAS */
+.fuenteBasica {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.fuenteAvanzada {
+    font-family: "MiFuente";
+}
+
+@font-face {
+    font-family: "MiFuente";
+    src: url("../Ejemplos/Fuentes/Nosifer-Regular.ttf");
+}
+
+/* 3. APLICANDO PADDING, MARGIN & BORDER */
+.caja {
+    border: 5px solid sandybrown;
+    margin: 30px 60px 30px 60px;
+    padding: 30px 100px 30px 100px;
+}
+
+/* 4. APLICANDO DISPLAY Y POSITION */
+/* DISPLAY */
+.inline {
+    border: 1px solid black;
+    display: inline;
+}
+
+.block {
+    border: 1px solid black;
+    display: block;
+}
+
+.inline-block {
+    border: 1px solid black;
+    display: inline-block;
+}
+
+.none {
+    border: 1px solid black;
+    display: none;
+}
+
+.flex {
+    border: 1px solid black;
+    display: flex;
+}
+
+/* POSITION */
+.static {
+    border: 1px solid black;
+    position: static;
+}
+
+.relative {
+    border: 1px solid black;
+    position: relative;
+}
+
+.absolute {
+    border: 1px solid black;
+    position: absolute;
+}
+
+.fixed {
+    border: 1px solid black;
+    position: fixed;
+}
+
+/* 5. CENTRANDO ELEMENTOS */
+/* HORIZONTAL */
+.horizontal-text-align {
+    background-color: black;
+    text-align: center;
+}
+
+.horizontal-inline-block {
+    background-color: blueviolet;
+    display: inline-block;
+}
+
+.horizontal-margin-auto {
+    background-color: black;
+}
+
+.horizontal-block {
+    background-color: blueviolet;
+    display: block;
+    margin: auto;
+}
+
+/* VERTICAL */
+.vertical-padre-1 {
+    background-color: black;
+}
+
+.vertical-hijo-1 {
+    background-color: blueviolet;
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.vertical-padre-2 {
+    background-color: black;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.vertical-hijo-2 {
+    background-color: blueviolet;
+    display: inline-block;
+}
+
+/* HORIZONTAL Y VERTICAL */
+.horizontal-vertical-padre {
+    background-color: black;
+    position: relative;
+}
+
+.horizontal-vertical-hijo {
+    background-color: blueviolet;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 6. PSEUDOCLASES */
+.enlace:link {
+    color: blue;
+}
+
+.enlace:visited {
+    color: chartreuse;
+}
+
+.enlace:hover {
+    color: red;
+}
+
+.enlace-2:active {
+    color: aquamarine;
+}
+
+.focus:focus {
+    background-color: blueviolet;
+}
+
+/* 7. PSEUDOELEMENTOS */
+.pseudoelemento::before {
+    content: "Pseudoelemento before!!";
+    color: red;
+}
+
+.pseudoelemento::after {
+    content: "Pseudoelemento after!!";
+    color: red;
+}
+
+/* 8. BACKGROUND */
+.background {
+    background: yellow;
+}
+
+.background-image {
+    background-image: url("./Imagenes/image1.jpeg");
+}
+
+.background-size {
+    background-image: url("./Imagenes/image1.jpeg");
+    background-size: 50%;
+}
+
+.background-position {
+    background-image: url("./Imagenes/image1.jpeg");
+    background-position: 100px;
+}
+
+.background-repeat {
+    background-image: url("./Imagenes/image1.jpeg");
+    background-repeat: round;
+}
+
+.background-color {
+    background-color: turquoise;
+}
+
+.background-attachment {
+    background-image: url("./Imagenes/image1.jpeg");
+    background-attachment: scroll;
+}
+
+/* 8.1 IMÁGEN CUADRADA */
+div.imagen-cuadrada {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    background-image: url("./Imagenes/image1.jpeg");
+    background-position: center;
+    background-size: cover;
+}
+
+/* 9. MEDIA QUERY - MOBILE-FIRST */
+.searchImage {
+    width: 20px;
+}
+
+@media screen and (min-width: 576px) {
+    .searchImage {
+        width: 30px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .searchImage {
+        width: 40px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .searchImage {
+        width: 50px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .searchImage {
+        width: 60px;
+    }
+}

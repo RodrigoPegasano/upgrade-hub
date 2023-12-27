@@ -1,0 +1,130 @@
+/* Propiedades del body mobile-first */
+body {
+    background-image: url("../TodoList/images/desk-background.jpg");
+    background-size: 100%;
+    font-family: "Courier New", Courier, monospace;
+    display: flex;
+    margin: 150px 0 150px 0;
+    margin-left: 45%;
+    margin-right: 10%;
+    padding: auto 0px;
+}
+
+/* Propiedades del body en pantallas grandes */
+@media screen and (min-width: 992px) {
+    body {
+        background-image: url("../TodoList/images/desk-background.jpg");
+        background-size: 100%;
+        margin-left: 55%;
+        margin-right: 10%;
+    }
+}
+
+/* Contenedor general de todos los elementos */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border: 1px solid grey;
+    box-shadow: 0 0 5px black;
+    border-radius: 7px;
+    width: 400px;
+    height: auto;
+    padding-bottom: 25px;
+}
+
+/* Contenedor del buscador */
+.search {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+}
+
+/* Contenedor del input */
+.search-text-box {
+    flex-grow: 20;
+}
+
+.search-text-box input {
+    color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 30px;
+    padding-left: 10px;
+}
+
+/* Contenedor del botón de adicionar nuevos elementos a la lista */
+.search-button {
+    align-self: auto;
+    flex-grow: 1;
+    width: 30px;
+}
+
+.button-add {
+    display: block;
+    text-decoration: none;
+    background-color: rgb(5, 181, 5);
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 800;
+    width: 100%;
+    height: 100%;
+}
+
+/* Contenido de la lista */
+.lista {
+    width: 85%;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 0px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    list-style: none;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+.p-style {
+    background-color: rgb(206, 205, 205);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: rgba(0, 0, 0, 0.6);
+    min-height: 20px;
+    height: auto;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.button-remove {
+    text-decoration: none;
+    background-color: rgb(255, 17, 17);
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 800;
+    height: 30px;
+    width: 40px;
+}
+
+/* Texto que aparece cuando la lista está vacía */
+.empty {
+    color: rgba(0, 0, 0, 0.6);
+    width: 85%;
+}
