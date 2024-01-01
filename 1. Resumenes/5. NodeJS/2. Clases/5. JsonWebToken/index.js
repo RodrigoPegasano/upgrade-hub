@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const productosRoute = require('./routes/producto.routes');
 const usuariosRoute = require('./routes/usuario.routes');
 const pedidosRoute = require('./routes/pedido.routes');
+const indexRoute = require('./routes/index.routes')
 // Mongoose
 const mongoose = require('mongoose');
 
@@ -21,6 +22,9 @@ app.set("secretKey", process.env.JWTSECRET)
 mongoose.connect(process.env.CONNECTIONSTRING)
     .then(() => console.log('Connected!'))
     .catch(error => console.log('Error'))
+
+// Importar index.routes
+app.use('/', indexRoute);
 
 // Importar producto.routes
 app.use('/productos', productosRoute);

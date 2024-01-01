@@ -35,9 +35,9 @@ function middlewareEmailValidacion(req, res, next) {
     }
 }
 
-// LOGIN
+// VERIFICAR LOGIN
 function middlewareEstaLoggeado(req, res, next) {
-    // usuarios/zona-privada/perfil?token=1234
+    // usuarios/zona-privada/perfil/id_number?token=1234
     if (req.query.token) {
 
         try {
@@ -56,7 +56,7 @@ function middlewareEstaLoggeado(req, res, next) {
     }
 }
 
-// ADMIN
+// VERIFICAR SI ES ADMIN
 async function middlewareEsAdmin(req, res, next) {
     // usuarios/zona-admin/home?token=1234
     if (req.query.token) {
