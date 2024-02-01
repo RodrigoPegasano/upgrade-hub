@@ -1,11 +1,11 @@
 import Tarea from "../tarea/tarea"
 
-function ListaTareas({ tareas, onTareaCambiada }) {
+function ListaTareas({ tareas, onTareaCambiada, onTareaBorrada }) {
 
     return (
 
         <ul>
-            {tareas.map((x, idx) => <Tarea onTareaCambiada={onTareaCambiada} key={idx} tarea={x}></Tarea>)}
+            {tareas.map((x, idx) => <Tarea onTareaCambiada={onTareaCambiada} onTareaBorrada={onTareaBorrada} key={idx} tarea={x}></Tarea>)}
         </ul>
 
     )

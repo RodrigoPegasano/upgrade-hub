@@ -13,7 +13,7 @@ function App() {
   function intentarAgregarTarea(textoTarea) {
     /* Primero que compruebe que no está vacío. Comprobar en el string consume más recursos y tarda más */
     if (textoTarea !== "" && tareas.find(x => x.texto === textoTarea) === undefined) {
-      setTareas([{ texto: textoTarea, hecha: false, borrado: null }, ...tareas])
+      setTareas([...tareas, { texto: textoTarea, hecha: false, borrado: null }])
       console.log(tareas)
     }
   }
@@ -29,15 +29,40 @@ function App() {
     }))
   }
 
+  /* Función para borrar una tarea por completo */
+  /* function borrarTarea(tareaBorrar) {
+    setTareas(tareas.filter(t => t.texto !== tareaBorrar.texto))
+  } */
+
+  /* Función para borrar una tarea pero guardar su registro */
+  function borrarTareaSoft(tareaBorrar) {
+    setTareas(tareas.map(t => {
+      if (t.texto === tareaBorrar.texto) {
+        if (t.borrado !== null) {
+          t.borrado = null
+        } else {
+          t.borrado = new Date()
+        }
+      }
+      return t
+    }))
+  }
+
   return (
     <>
       {/* Titulo y nos muestra en tiempo real cuantas tareas tenemos creadas */}
-      <h1>Lista de tareas ({tareas.length})</h1>
+      <h1>Lista de tareas ({tareas.filter(x => x.borrado === null).length})</h1>
       {/* Nos muestra en tiempo real cuantas tareas tenemos pendientes y cuantas realizadas */}
-      <h5>Hechas: {tareas.filter(x => x.hecha).length}</h5>
-      <h5>Pendientes: {tareas.filter(x => !x.hecha).length}</h5>
+      <h5>Completadas: {tareas.filter(x => x.borrado === null).filter(x => x.hecha).length}</h5>
+      <h5>Pendientes: {tareas.filter(x => x.borrado === null).filter(x => !x.hecha).length}</h5>
       <InputTarea onAgregarTarea={intentarAgregarTarea}></InputTarea>
-      <ListaTareas onTareaCambiada={cambiarEstadoTarea} tareas={tareas}></ListaTareas>
+      <ListaTareas onTareaCambiada={cambiarEstadoTarea} onTareaBorrada={borrarTareaSoft} tareas={tareas.filter(t => t.borrado === null)}></ListaTareas>
+
+      <hr></hr>
+
+      {/* Mostrar tareas borradas */}
+      <h2 >Lista de tareas ({tareas.filter(x => x.borrado !== null).length})</h2>
+      <ListaTareas onTareaCambiada={cambiarEstadoTarea} onTareaBorrada={borrarTareaSoft} tareas={tareas.filter(t => t.borrado !== null)}></ListaTareas>
     </>
   )
 }
