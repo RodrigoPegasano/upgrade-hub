@@ -36,7 +36,7 @@ function App() {
       <Formulario onInsertarItem={insertarItem}></Formulario>
 
       <Container>
-        <Row>{items.map(i => <Item item={i}></Item>)}</Row>
+        <Row>{items.map((i, idx) => <Item key={idx} item={i}></Item>)}</Row>
       </Container>
     </>
   )
