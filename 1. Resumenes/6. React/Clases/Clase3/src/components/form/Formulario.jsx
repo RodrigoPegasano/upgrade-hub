@@ -20,10 +20,7 @@ function Formulario({ onInsertarItem }) {
     return (
 
         <Form>
-            <h1>Formulario</h1>
-
             <Container>
-
                 <Row>
                     <Col sm={12} md={6} lg={6}>
                         <Form.Group>

@@ -2,42 +2,35 @@ import { useEffect, useState } from 'react'
 import Formulario from './components/form/Formulario'
 import Item from './components/item/Item'
 import { Container, Row } from 'react-bootstrap'
+import { Route, Routes } from 'react-router-dom'
+import Index from './pages/index/Index'
+import Contact from './pages/contact/Contact'
+import NavBar from './pages/navBar/NavBar'
+import Peliculas from './pages/films/Films'
+import InsertFilms from './pages/insertFilms/InsertFilms'
+import Login from './pages/login/Login'
 
 function App() {
 
-  /* Array de peliculas */
-  const [items, setItems] = useState([])
-
-  // Utilizar db.json
-  // Base de datos test
-  useEffect(() => {
-    fetch("http://localhost:3000/peliculas")
-      .then((respuesta) =>
-        respuesta.json()
-          .then((datos) => {
-            setItems(datos)
-          }))
-  }, [])
-
-  // Agregar y guardar nuevas peliculas a la base de datos
-  function insertarItem(item) {
-    fetch("http://localhost:3000/peliculas", {
-      method: "POST",
-      body: JSON.stringify(item)
-    }).then(() => {
-      setItems([...items, item])
-    }).catch((error) => {
-      alert("Error al subir la pelicula")
-    })
-  }
-
   return (
     <>
-      <Formulario onInsertarItem={insertarItem}></Formulario>
+      <header>
+        <NavBar></NavBar>
+      </header>
 
       <Container>
-        <Row>{items.map((i, idx) => <Item key={idx} item={i}></Item>)}</Row>
+        <Routes>
+          <Route path='/' element={<Index></Index>}></Route>
+          <Route path='/peliculas' element={<Peliculas></Peliculas>}></Route>
+          <Route path='/contacto' element={<Contact></Contact>}></Route>
+          <Route path='/login' element={<Login></Login>}></Route>
+          <Route path='/agregar-pelicula' element={<InsertFilms></InsertFilms>}></Route>
+        </Routes>
       </Container>
+
+      <footer>
+        Footer
+      </footer>
     </>
   )
 }
