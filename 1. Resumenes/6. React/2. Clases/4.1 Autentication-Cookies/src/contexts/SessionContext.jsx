@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 
 // Esta linea crea el contexto y lo exportamos para que podamos utilizarlo desde cualquier parte
 // de nuestra aplicación que esté envuelta por el contexto
@@ -10,14 +11,16 @@ export function SessionProvider({ children }) {
 
     const [user, setUser] = useState(null)
 
+    const [cookies, setCookie, removeCookie] = useCookies(['user'])
+
     // useEffect
     // El [] vacío al final es para que solo se ejecute una vez
     useEffect(() => {
         // Permite que el usuario siga loggeado al recargar la página
-        const posibleUsuario = localStorage.getItem("user")
+        const posibleUsuario = cookies.user
 
         if (posibleUsuario !== null) {
-            setUser(JSON.parse(posibleUsuario))
+            setUser(posibleUsuario)
         }
     }, [])
 
@@ -26,14 +29,14 @@ export function SessionProvider({ children }) {
         /* Una vez que el usuario hizo login, se le envía a area privada */
         setUser(user)
         // Guarda el usuario y la contraseña que acaba de hacer login
-        localStorage.setItem("user", JSON.stringify(user))
+        setCookie('user', user)
     }
 
     // Función para cuando hace logout
     function logout() {
         setUser(null)
         // Si el usuario hizo logout, borra el usuario para que al recargar la página se le pida de nuevo que haga login
-        localStorage.removeItem("user")
+        removeCookie('user')
     }
 
     return (
