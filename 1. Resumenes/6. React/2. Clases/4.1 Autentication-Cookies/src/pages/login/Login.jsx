@@ -11,6 +11,17 @@ function Login() {
     // Esta función es para el onClick del button
     function doLogin() {
         login({...datos, rol: "Admin"})
+
+        // Esto es para guardar el login y el token
+        // Otro caos inventado
+        /* axios.post("http://localhost:3000/usuarios/login", datos)
+        .then((respuesta) => {
+            if (respuesta.data.token) {
+                login({...datos, password: null, rol: "User", token: respuesta.data.token})
+            } else {
+                setMensaje(respuesta.data.msg)
+            }
+        }) */
     }
 
     return (
@@ -20,6 +31,7 @@ function Login() {
             <input type="email" value={datos.email} onChange={(e) => setDatos({ ...datos, email: e.target.value })}></input>
             <input type="password" value={datos.password} onChange={(e) => setDatos({ ...datos, password: e.target.value })}></input>
             <button onClick={doLogin}>Login</button>
+            {mensaje !== "" ? <p>{mensaje}</p> : ""}
         </>
     )
 }

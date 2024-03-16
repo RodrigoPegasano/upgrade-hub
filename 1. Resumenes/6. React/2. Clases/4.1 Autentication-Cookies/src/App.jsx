@@ -16,6 +16,7 @@ import { SessionContext } from './contexts/SessionContext'
 import NotFound from './pages/notFound/NotFound'
 import Admin from './pages/admin/Admin'
 import { CookieAcceptContext } from './contexts/CookieAcceptContext'
+import Signup from './pages/signup/Signup'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
   const { decision, aceptar, rechazar } = useContext(CookieAcceptContext)
   const { user, logout } = useContext(SessionContext)
 
+  // Condición en caso de que el usuario no acepte las cookies.
   if (decision === 2) {
 
     return (
@@ -48,6 +50,10 @@ function App() {
             {/* Si el usuario está loggeado, no aparece*/}
             {user ? '' : <li><Link className='link' to='/login'>Login</Link></li>}
 
+            {/* Si el usuario no está loggeado, aparece la página de login en el navegador */}
+            {/* Si el usuario está loggeado, no aparece*/}
+            {user ? '' : <li><Link className='link' to='/signup'>Crear usuario</Link></li>}
+
             {/* Si el usuario no está loggeado, no aparece en el navegador */}
             {/* Si el usuario está loggeado, aparece */}
             {user ? <li><Link className='link' to='/area-privada'>Área privada</Link></li> : ''}
@@ -67,6 +73,7 @@ function App() {
             <Route path='*' element={<NotFound></NotFound>}></Route>
             <Route path='/' element={<Home></Home>}></Route>
             <Route path='/login' element={user ? <Navigate to='/area-privada'></Navigate> : <Login></Login>}></Route>
+            <Route path='/signup' element={<Signup></Signup>}></Route>
             <Route path='/area-privada' element={user ? <Private></Private> : <Navigate to='/login'></Navigate>}></Route>
             <Route path='/area-publica' element={<Public></Public>}></Route>
             <Route path='/area-admin' element={user && user.rol === "Admin" ? <Admin></Admin> : <NotFound></NotFound>}></Route>
